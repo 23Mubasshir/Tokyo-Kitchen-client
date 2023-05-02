@@ -3,6 +3,7 @@ import "./LogIn.css";
 import { Form, Button } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -29,9 +30,11 @@ const Login = () => {
           <Button variant="light" type="submit" className="w-100 mb-3">
             Sign In
           </Button>
+          <p><small>Don't Have an account <Link className="text-decoration-none  text-color
+        " to="/sign-up"><u>Sign Up</u></Link> Here.</small></p>
           <div className="text-center mb-3">
             {" "}
-            <p className="my-1">or</p> <h5>sign in with:</h5>{" "}
+            <p className="my-1">or</p> <h5>Sign in with:</h5>{" "}
           </div>
           <Button variant="outline-primary rounded-0" className="w-100 mb-3">
             <FaGoogle /> Google
