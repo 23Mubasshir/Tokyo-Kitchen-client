@@ -1,0 +1,23 @@
+.question-answer-component{
+    margin: 150px 250px 150px 250px;
+}
+
+
+.question-answer-component h1{
+    text-align: center;
+    margin: 50px 0px 40px 0px;
+    font-size: 50px;
+}
+.question-answer{
+font-size: 18px;
+color: #353535;
+}
+
+.question-answer h3{
+    font-size: 25px;
+    margin-top: 50px;
+}
+
+.question-answer li,p{
+    line-height: 1.5;
+}
