@@ -1,0 +1,7 @@
+.error-img{
+    max-width: 70%;
+    height: auto;
+}
+.error-page{
+    background-image:url(../../assets/404-bg.jpg) ;
+}

@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Konkhmer+Sleokchher&family=Rubik+Dirt&display=swap");
+
+.banner-wrapper {
+  background: url("../../assets/Banner.png") center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-content {
+  text-align: center;
+  color: #0f0f0f;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.brand-name {
+  font-size: 100px;
+  font-family: "Bebas Neue", cursive;
+  font-family: "Konkhmer Sleokchher", cursive;
+  font-family: "Rubik Dirt", cursive;
+}
+
+@media all and (max-width: 576px) {
+    .brand-name {
+        font-size: 50px;
+        font-family: "Bebas Neue", cursive;
+        font-family: "Konkhmer Sleokchher", cursive;
+        font-family: "Rubik Dirt", cursive;
+      }
+    .banner-content {
+        color: #0f0f0f;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+}
