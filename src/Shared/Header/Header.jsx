@@ -23,9 +23,9 @@ const Header = () => {
               <Link className="text-decoration-none px-3 mt-2 text-light" to="#About-us">About us</Link>
             </Nav>
             <Nav>
-              <Link className="my-3 me-3" to="/sign-in"><Button variant="outline-light">Sign in</Button></Link>
+              <Link className="my-3 me-3" to="/sign-in"><Button variant="outline-light rounded-0">Sign in</Button></Link>
               <Link className="my-lg-3"eventkey={2} to="/sign-up">
-              <Button variant="outline-light">Sign Up</Button>
+              <Button variant="outline-light rounded-0">Sign Up</Button>
               </Link>
             </Nav>
           </Navbar.Collapse>
