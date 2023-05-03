@@ -17,6 +17,8 @@ const Login = () => {
               className="mb-4"
               type="email"
               placeholder="Your email"
+              name="email"
+              required
             />
           </Form.Group>
           <Form.Group controlId="password">
@@ -25,17 +27,32 @@ const Login = () => {
               className="mb-4"
               type="password"
               placeholder="Your Password"
+              name="password"
+              required
             />
           </Form.Group>
+
           <Button variant="light" type="submit" className="w-100 mb-3">
             Sign In
           </Button>
-          <p><small>Don't Have an account <Link className="text-decoration-none  text-color
-        " to="/sign-up"><u>Sign Up</u></Link> Here.</small></p>
+
+          <Form.Text>
+            <small>
+              Don't Have an account
+              <Link className="text-decoration-none  text-color" to="/sign-up">
+                <u>Sign Up</u>
+              </Link>
+              Here.
+            </small>
+          </Form.Text>
+
+          <Form.Text className="text-success"></Form.Text>
+          <Form.Text className="text-danger"></Form.Text>
+
           <div className="text-center mb-3">
-            {" "}
-            <p className="my-1">or</p> <h5>Sign in with:</h5>{" "}
+            <p className="my-1">or</p> <h5>Sign in with:</h5>
           </div>
+
           <Button variant="outline-primary rounded-0" className="w-100 mb-3">
             <FaGoogle /> Google
           </Button>
