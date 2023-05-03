@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RecipeCards = (props) => {
+  const [disabled, setDisabled] = useState(false);
+
+  const ShowTost = () => {
+    toast("successfully added to you favorite");
+  };
+
   const { RecipeName, Ingredients, CookingMethod, Rating } = props.cart;
   return (
     <div className="col-4">
@@ -15,27 +23,33 @@ const RecipeCards = (props) => {
             <p>Rating : {Rating}</p>
           </h5>
 
-          <p className="card-text">
+          <div className="card-text">
             <h4>Cooking Method: </h4>
             <span className="small">{CookingMethod}</span>
-          </p>
-
-          
+          </div>
 
           <div className="card-text">
             <h4 className="mb-4">Ingredients: </h4>
             {Ingredients.map((SingleIngredients, idk) => (
-              <ul>
+              <ul key={idk}>
                 <li>{SingleIngredients}</li>
               </ul>
             ))}
           </div>
 
-
           <div className="d-flex justify-content-end mx-2 my-3 align-item-center">
-            <button type="button" className="btn  btn-outline-light ">
+            <button
+              type="button"
+              onClick={() => {
+                setDisabled(true);
+                ShowTost();
+              }}
+              disabled={disabled}
+              className="btn  btn-outline-light rounded-5"
+            >
               <FaHeart />
             </button>
+            <ToastContainer />
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import './Cards.css'
 import { FaThumbsUp, FaPizzaSlice, FaUser} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Cards = (props) => {
   const {
@@ -10,6 +11,7 @@ const Cards = (props) => {
     YearsOfExperience,
     NumberOfRecipes,
     Likes,
+    _id
   } = props.cart;
   return (
     <Col>
@@ -21,9 +23,12 @@ const Cards = (props) => {
         <FaUser/> Years Of Experience: {YearsOfExperience} <br />
         <FaPizzaSlice/> Number Of Recipes: {NumberOfRecipes}<br />
         <FaThumbsUp/> Likes : {Likes}<br />
+
+        <Link to={`/chefCart/${_id}`}>
         <Button className="w-100 mt-4" variant="dark" size="lg">
         View Recipes
-      </Button>
+      </Button></Link>
+
         </Card.Text>
       </Card.Body>
     </Card>
