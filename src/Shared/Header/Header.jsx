@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../components/Providers/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 
@@ -20,24 +20,26 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
-              <Link
-                className="text-decoration-none px-3 mt-2 text-light"
+
+              <NavLink
+                className="text-decoration-none px-3 mt-2 "
                 to="/"
               >
                 Home
-              </Link>
-              <Link
-                className="text-decoration-none px-3 mt-2 text-light"
+              </NavLink>
+
+              <NavLink
+                className="text-decoration-none px-3 mt-2 "
                 to="/Blog"
               >
                 Blog
-              </Link>
-              <Link
-                className="text-decoration-none px-3 mt-2 text-light"
-                to="#About-us"
+              </NavLink>
+              <NavLink
+                className="text-decoration-none px-3 mt-2 "
+                to="/About-us"
               >
                 About us
-              </Link>
+              </NavLink>
             </Nav>
             <Nav>
               {user ? (
@@ -48,9 +50,9 @@ const Header = () => {
                   <FaRegUserCircle style={{ fontSize: "2.5rem" }} />
                 </Link>
               ) : (
-                <Link className="m-lg-3" eventkey={2} to="/sign-up">
+                <NavLink className="m-lg-3" eventkey={2} to="/sign-up">
                   <Button variant="outline-light rounded-0">Sign Up</Button>
-                </Link>
+                </NavLink>
               )}
 
               {user ? (
@@ -58,9 +60,9 @@ const Header = () => {
                   <Button variant="outline-light rounded-0">Sign Out</Button>
                 </Link>
               ) : (
-                <Link className="my-3 me-3" to="/sign-in">
+                <NavLink className="my-3 me-3" to="/sign-in">
                   <Button variant="outline-light rounded-0">Sign In</Button>
-                </Link>
+                </NavLink>
               )}
 
             </Nav>
