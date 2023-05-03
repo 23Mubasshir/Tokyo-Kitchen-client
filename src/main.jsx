@@ -1,17 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Home from './Pages/Home/Home.jsx';
-import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
-import Blog from './Pages/Blog/Blog.jsx';
-import Login from './Pages/Login/Login.jsx';
-import SignUp from './Pages/SignUp/SignUp.jsx';
-import ChefDetails from './Pages/ChefDetails/ChefDetails.jsx';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./Pages/Home/Home.jsx";
+import ErrorPage from "./Pages/ErrorPage/ErrorPage.jsx";
+import Blog from "./Pages/Blog/Blog.jsx";
+import Login from "./Pages/Login/Login.jsx";
+import SignUp from "./Pages/SignUp/SignUp.jsx";
+import ChefDetails from "./Pages/ChefDetails/ChefDetails.jsx";
+import AuthProvider from "./components/Providers/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,14 +36,17 @@ const router = createBrowserRouter([
       {
         path: "/chefCart/:id",
         element: <ChefDetails />,
-        loader: ({params}) => fetch(`http://localhost:3001/chefCart/${params.id}`)
-      }
+        loader: ({ params }) =>
+          fetch(`http://localhost:3001/chefCart/${params.id}`),
+      },
     ],
-  }
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </React.StrictMode>
+);
