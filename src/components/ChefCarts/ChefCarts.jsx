@@ -15,7 +15,7 @@ const ChefCarts = () => {
   }, []);
   return (
     <div className="card-container bg-dark">
-      <h1 className="text-center py-5 text-light">Our Chefs</h1>
+      <h1 className="text-center py-5 text-light display-3">Our Chefs</h1>
       <Row xs={1} md={2} lg={3} className="g-4">
         {ChefCarts.map((cart) => (
           <Cards key={cart.id} cart={cart}></Cards>

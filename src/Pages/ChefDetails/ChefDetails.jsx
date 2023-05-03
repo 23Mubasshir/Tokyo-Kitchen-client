@@ -3,10 +3,10 @@ import "./ChefDetails.css";
 import { useLoaderData } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { FaThumbsUp, FaPizzaSlice, FaUser } from "react-icons/fa";
+import RecipeCards from "../../components/RecipeCards/RecipeCards";
 
 const ChefDetails = () => {
   const data = useLoaderData();
-  console.log(data);
   const {
     ChefPicture,
     ChefName,
@@ -50,15 +50,15 @@ const ChefDetails = () => {
       </div>
       <div className="chef-recipes">
         <h1>My Recipes</h1>
-        <div class="row">
-          <div class="col">
-            
+        <div className="row m-5">
+          
+          {Recipes.map((cart, idk) => (
+          <RecipeCards key={idk} cart={cart}></RecipeCards>
+        ))}
           </div>
-          <div class="col">2 of 3</div>
-          <div class="col">3 of 3</div>
         </div>
       </div>
-    </div>
+
   );
 };
 
