@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { FaHeart } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +14,10 @@ const RecipeCards = (props) => {
   const { RecipeName, Ingredients, CookingMethod, Rating } = props.cart;
   return (
     <div className="col-4">
+      {/* <-----Data Load Spinner-----> */}
+      <h1 className="text-center text-light display-3">
+        {props ? " " : <Spinner animation="border" variant="light" />}
+      </h1>
       <div className="card chef-recipes-card text-white bg-dark mb-3">
         <div className="card-header text-center pt-5">
           <h1>{RecipeName}</h1>

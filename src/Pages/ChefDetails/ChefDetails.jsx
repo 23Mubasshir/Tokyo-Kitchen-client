@@ -49,7 +49,10 @@ const ChefDetails = () => {
         </div>
       </div>
       <div className="chef-recipes">
-        <h1>My Recipes</h1>
+        <div className="row">
+        <h1 className="mt-4 text-center text-light py-3 bg-dark
+        ">My Recipes</h1>
+        </div>
         <div className="row m-5">
           
           {Recipes.map((cart, idk) => (
