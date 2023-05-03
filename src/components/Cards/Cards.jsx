@@ -14,7 +14,7 @@ const Cards = (props) => {
   return (
     <Col>
     <Card  style={{ height: '550px' }}>
-      <Card.Img variant="top" src={ChefPicture} />
+      <Card.Img className="card-img1" variant="top" src={ChefPicture} />
       <Card.Body className="card-bg">
         <Card.Title><h2 className="text-center ">{ChefName}</h2></Card.Title>
         <Card.Text className="mx-4">
