@@ -11,6 +11,7 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 import Blog from './Pages/Blog/Blog.jsx';
 import Login from './Pages/Login/Login.jsx';
 import SignUp from './Pages/SignUp/SignUp.jsx';
+import ChefDetails from './Pages/ChefDetails/ChefDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,9 +34,14 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUp />,
+      },
+      {
+        path: "/chefCart/:id",
+        element: <ChefDetails />,
+        loader: ({params}) => fetch(`http://localhost:3001/chefCart/${params.id}`)
       }
     ],
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

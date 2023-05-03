@@ -1,0 +1,19 @@
+.chef-details{
+    /* background: rgb(255, 236, 236); */
+    background-color: black;
+}
+.chef-img-banner{
+   height: 490px;
+}
+.chef-text h5{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 0.9em;
+}
+.chef-recipes{
+    background-image:url(../../assets/login-bg-black.png) ;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.chef-recipes col{
+    background-color: black;
+}
