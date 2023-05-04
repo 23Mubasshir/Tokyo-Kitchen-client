@@ -2,9 +2,9 @@ import React from "react";
 
 const QuestionAnswer = () => {
   return (
-    <section>
+    <section className="my-5">
       <div>
-        <h1 className="mt-4 text-center text-light py-3 bg-dark">FAQ</h1>
+        <h1 className="mt-5 text-center text-light py-3 bg-dark">FAQ</h1>
 
         <p className="text-center mb-5 text-light py-3 bg-dark">
           Find the answers for the most frequently asked questions below
@@ -21,7 +21,7 @@ const QuestionAnswer = () => {
         </div>
 
         <div className="col-md-6 col-lg-3 mb-4">
-          <h6 className="mb-3 text-dark h3">How payment Works?</h6>
+          <h6 className="mb-3 text-dark h3">How payment works?</h6>
           <p>
             Currently, we offer monthly subscription for daily blog and recipes. You can upgrade or
             cancel your monthly account at any time with no further obligation.
@@ -29,25 +29,20 @@ const QuestionAnswer = () => {
         </div>
 
         <div className="col-md-6 col-lg-3 mb-4">
-          <h6 className="mb-3 text-dark h3">Is it Safe?</h6>
+          <h6 className="mb-3 text-dark h3">Is it safe?</h6>
           <p>
-            Absolutely because our chefs works all over japan. They are well trained and professional.
+            Absolutely because our chefs works all over japan. They are well trained and professional. The interesting thing is we never got any complain from any clients.
           </p>
         </div>
 
         <div className="col-md-6 col-lg-3 mb-4">
-          <h6 className="mb-3 text-dark h3">
-         A question that
-            is longer then the previous one?
-          </h6>
+          <h6 className="mb-3 text-dark h3">Can't access recipes?</h6>
           <p>
-            <strong>
-              <u>Yes, it is possible!</u>
-            </strong>{" "}
-            You can cancel your subscription anytime in your account. Once the
-            subscription is cancelled, you will not be charged next month.
+            To access the recipes and daily premium blogs you have to subscribe our monthly plan. Than you will get over 200+ premium recipes and over 300+ blogs.
           </p>
         </div>
+
+    
       </div>
     </section>
   );

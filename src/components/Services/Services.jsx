@@ -3,7 +3,7 @@ import { Card, Col, Row } from "react-bootstrap";
 
 const Services = () => {
   return (
-    <div className="">
+    <div className="my-5">
       <h1 className="mt-4 text-center text-light py-3 bg-dark
         ">Our Services</h1>
       <Row xs={1} md={2} lg={4} className="g-4 m-5">
@@ -51,9 +51,7 @@ const Services = () => {
                 <hr />
               </Card.Title>
               <Card.Text className="mx-4 text-center small">
-                We provide Best chefs from Japan. Anyone can Book Our services
-                for their events.Simply you have to email us to proceed. So
-                email and contact us to get the best chefs in Japan.
+                There is a Blog section where you will find daily blogs from top japanese chefs. You can simply follow the blogs and make your own dish. But the blog and recipes are premium so you have to subscribe for it.
               </Card.Text>
             </Card.Body>
           </Card>
@@ -67,9 +65,8 @@ const Services = () => {
                 <hr />
               </Card.Title>
               <Card.Text className="mx-4 text-center small">
-                We provide Best chefs from Japan. Anyone can Book Our services
-                for their events.Simply you have to email us to proceed. So
-                email and contact us to get
+                Our Blogs recipes and instruction is very easy to follow and cook. Anyone can cook by following the instruction from our daily blogs.
+                Also all the ingredient are presents in our blog.
               </Card.Text>
             </Card.Body>
           </Card>
