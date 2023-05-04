@@ -7,7 +7,7 @@ import "./ChefCarts.css";
 const ChefCarts = () => {
   const [ChefCarts, setChefCarts] = useState([]);
   useEffect(() => {
-    fetch("https://assignment-10-tokyo-kitchen-server-23mubasshir.vercel.app/chefCart")
+    fetch("https://assignment-10-tokyo-kitchen-server.vercel.app/chefCart")
       .then((res) => res.json())
       .then((data) => setChefCarts(data))
       .catch((error) => console.error(error));
