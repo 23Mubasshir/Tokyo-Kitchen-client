@@ -6,13 +6,13 @@ import { FaGithub } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/Providers/AuthProvider";
 
-
 const Login = () => {
-  const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "./";
+  const from = location.state?.from?.pathname || "/";
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -24,11 +24,13 @@ const Login = () => {
         // Signed in
         const loggedUser = result.user;
         navigate(from, { replace: true });
-        console.log(loggedUser);
+        // console.log(loggedUser);
+        setError("");
+        setSuccess("User has been Signed In Successfully");
       })
       .catch((error) => {
         // Handle Errors here.
-        console.log("error", error.message);
+        console.log(error.message);
       });
   };
 
@@ -39,11 +41,13 @@ const Login = () => {
         // Signed in
         const loggedUser = result.user;
         navigate(from, { replace: true });
-        console.log(loggedUser);
+        // console.log(loggedUser);
+        setError("");
+        setSuccess("User has been Signed In Successfully");
       })
       .catch((error) => {
         // Handle Errors here.
-        console.log("error", error.message);
+        console.log(error.message);
       });
   };
 
@@ -53,14 +57,14 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     setError("");
     form.reset();
 
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         setSuccess("User has been signed in Successfully");
         navigate(from, { replace: true });
       })
@@ -73,6 +77,7 @@ const Login = () => {
   return (
     <div className="login-page">
       <div className="d-flex   justify-content-center align-items-center vh-100">
+        {/* <----- Login page Form-----> */}
         <Form
           onSubmit={handleLogin}
           className="p-5 shadow rounded login-form-card"
@@ -113,6 +118,7 @@ const Login = () => {
             </small>
           </Form.Text>
 
+          {/* <-----Error and Success show-----> */}
           <Form.Text className="text-danger my-2">
             <p>{error}</p>
           </Form.Text>
@@ -124,6 +130,7 @@ const Login = () => {
             <p className="my-1">or</p> <h5>Sign in with:</h5>
           </div>
 
+          {/* <-----Google and Github Sign-in Button-----> */}
           <Button
             onClick={handleGoogleSignIn}
             variant="outline-primary rounded-0"

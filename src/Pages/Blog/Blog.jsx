@@ -44,7 +44,7 @@ const Blog = () => {
           <p>
             Node.js is a JavaScript runtime that allows developers to run
             JavaScript code outside of a web browser. It provides built-in
-            modules that make it easy to perform tasks such as file I/O, network
+            modules that make it easy to perform tasks network
             communication, and server-side programming. Express.js is a web
             application framework built on top of Node.js that provides tools
             and utilities for building web applications and APIs. Node.js

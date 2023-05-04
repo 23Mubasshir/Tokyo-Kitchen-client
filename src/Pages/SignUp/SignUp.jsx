@@ -7,67 +7,71 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/Providers/AuthProvider";
 
 const SignUp = () => {
-  const { createUser, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const { createUser, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  //  < ----- Google Sign-in ----->
+  //  < ----- Google Sign-up ----->
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
         // Signed in
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
+        setError("");
+        setSuccess("User has been Created Successfully");
       })
       .catch((error) => {
         // Handle Errors here.
-        console.log("error", error.message);
+        console.log(error.message);
       });
   };
 
-  //  < ----- Github Sign-in ----->
+  //  < ----- Github Sign-up ----->
   const handleGithubSignIn = () => {
     signInWithGithub()
       .then((result) => {
         // Signed in
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
+        setError("");
+        setSuccess("User has been Created Successfully");
       })
       .catch((error) => {
         // Handle Errors here.
-        console.log("error", error.message);
+        console.log(error.message);
       });
   };
 
   //  < ----- Regular Sign-Up ----->
-  const handleRegister = event => {
+  const handleRegister = (event) => {
     event.preventDefault();
-    setSuccess('');
-    setError('')
+    setSuccess("");
+    setError("");
     const form = event.target;
     const name = form.name.value;
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    if(password.length < 6){
-      setError('Password has to be least 6 characters');
+    if (password.length < 6) {
+      setError("Password has to be least 6 characters");
       return;
     }
 
     createUser(email, password)
-        .then(result => {
-            const createdUser = result.user;
-            console.log(createdUser);
-            setError('');
-            setSuccess('User has been Created Successfully');
-            form.reset();
-        })
-        .catch(error => {
-            console.log(error.message);
-            setError(error.message);
-            
-        })
-}
+      .then((result) => {
+        const createdUser = result.user;
+        // console.log(createdUser);
+        setError("");
+        setSuccess("User has been Created Successfully");
+        form.reset();
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setError(error.message);
+      });
+  };
 
   const handleAccepted = (event) => {
     // setAccepted(event.target.checked);
@@ -76,7 +80,11 @@ const SignUp = () => {
   return (
     <div className="login-page">
       <div className="d-flex   justify-content-center align-items-center vh-100">
-        <Form onSubmit={handleRegister} className="p-5 shadow rounded login-form-card">
+        {/* <----- Sign-Up page Form-----> */}
+        <Form
+          onSubmit={handleRegister}
+          className="p-5 shadow rounded login-form-card"
+        >
           <h3 className="text-center mb-4">Sign Up</h3>
           <Form.Group controlId="name">
             <Form.Label>Your Name</Form.Label>
@@ -146,8 +154,13 @@ const SignUp = () => {
             </small>
           </Form.Text>
 
-          <Form.Text className="text-danger my-2"><p>{error}</p></Form.Text>
-          <Form.Text className="text-success my-2"><p>{success}</p></Form.Text>
+          {/* <-----Error and Success show-----> */}
+          <Form.Text className="text-danger my-2">
+            <p>{error}</p>
+          </Form.Text>
+          <Form.Text className="text-success my-2">
+            <p>{success}</p>
+          </Form.Text>
 
           <Form.Text>
             <div className="text-center mb-3">
@@ -155,6 +168,7 @@ const SignUp = () => {
             </div>
           </Form.Text>
 
+          {/* <-----Google and Github Sign-in Button-----> */}
           <Button
             onClick={handleGoogleSignIn}
             variant="outline-primary rounded-0"

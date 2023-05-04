@@ -12,6 +12,7 @@ const ErrorPage = () => {
     <Header></Header>
     <div className="error-page d-flex align-items-center justify-content-center vh-100">
         <div className="text-center">
+            {/* <-----Error image-----> */}
             <img className="error-img" src={img404}></img>
             <h4 className="fs-3 text-light mb-5"> Opps! Page not found.</h4>
             <Link to="/" className="btn pt-3 px-4 btn-lg btn-light"><h4>Go Home</h4></Link>
