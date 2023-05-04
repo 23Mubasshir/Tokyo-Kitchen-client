@@ -3,18 +3,17 @@ import "./LogIn.css";
 import { Form, Button } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/Providers/AuthProvider";
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  GithubAuthProvider,
-} from "firebase/auth";
-import app from "../../firebase/firebase.config";
+
 
 const Login = () => {
   const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "./";
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -24,6 +23,7 @@ const Login = () => {
       .then((result) => {
         // Signed in
         const loggedUser = result.user;
+        navigate(from, { replace: true });
         console.log(loggedUser);
       })
       .catch((error) => {
@@ -38,6 +38,7 @@ const Login = () => {
       .then((result) => {
         // Signed in
         const loggedUser = result.user;
+        navigate(from, { replace: true });
         console.log(loggedUser);
       })
       .catch((error) => {
@@ -61,7 +62,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         setSuccess("User has been signed in Successfully");
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);

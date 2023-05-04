@@ -10,6 +10,7 @@ import Login from "./Pages/LogIn/LogIn.jsx";
 import SignUp from "./Pages/SignUp/SignUp.jsx";
 import ChefDetails from "./Pages/ChefDetails/ChefDetails.jsx";
 import AuthProvider from "./components/Providers/AuthProvider.jsx";
+import PrivateRoute from "./components/Routes/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/chefCart/:id",
-        element: <ChefDetails />,
+        element: <PrivateRoute><ChefDetails /></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:3001/chefCart/${params.id}`),
       },
