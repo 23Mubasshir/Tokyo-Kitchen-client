@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         path: "/chefCart/:id",
         element: <PrivateRoute><ChefDetails /></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:3001/chefCart/${params.id}`),
+          fetch(`https://assignment-10-tokyo-kitchen-server-23mubasshir.vercel.app/chefCart/${params.id}`),
       },
     ],
   },
