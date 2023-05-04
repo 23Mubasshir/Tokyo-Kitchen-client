@@ -9,7 +9,13 @@ import { AuthContext } from "../../components/Providers/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
 
   return (
     <div>
@@ -20,18 +26,11 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
-
-              <NavLink
-                className="text-decoration-none px-3 mt-2 "
-                to="/"
-              >
+              <NavLink className="text-decoration-none px-3 mt-2 " to="/">
                 Home
               </NavLink>
 
-              <NavLink
-                className="text-decoration-none px-3 mt-2 "
-                to="/Blog"
-              >
+              <NavLink className="text-decoration-none px-3 mt-2 " to="/Blog">
                 Blog
               </NavLink>
               <NavLink
@@ -56,15 +55,19 @@ const Header = () => {
               )}
 
               {user ? (
-                <Link className="my-3 me-3" to="/sign-in">
-                  <Button variant="outline-light rounded-0">Sign Out</Button>
+                <Link className="my-3 me-3">
+                  <Button
+                    onClick={handleLogout}
+                    variant="outline-light rounded-0"
+                  >
+                    Sign Out
+                  </Button>
                 </Link>
               ) : (
                 <NavLink className="my-3 me-3" to="/sign-in">
                   <Button variant="outline-light rounded-0">Sign In</Button>
                 </NavLink>
               )}
-
             </Nav>
           </Navbar.Collapse>
         </Container>

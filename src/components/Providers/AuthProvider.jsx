@@ -1,40 +1,68 @@
-import React, { createContext } from 'react';
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import app from '../../firebase/firebase.config';
+import React, { createContext, useEffect, useState } from "react";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import app from "../../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
-
 const auth = getAuth(app);
-const AuthProvider = ({children}) => {
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
-    const createUser = (email, password) => {
-        // setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
+  // <-----Regular Sign Un----->
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  // <-----Regular SignIn----->
+  const signIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  // <-----Google SignIn----->
+  const signInWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+  // <-----Github SignIn----->
+  const signInWithGithub = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+  // <-----Regular SignOut----->
+  const logOut = () => {
+    return signOut(auth);
+  };
+  // <-----Observe auth state change----->
+  useEffect( ()=>{
+    const unsubscribe = onAuthStateChanged(auth, currentUser =>{
+        console.log('auth state change', currentUser);
+        setUser(currentUser);
+    });
+    return () => {
+        unsubscribe();
     }
+  })
 
-    const signIn = (email, password) => {
-        // setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
-    }
-    
-    const logOut = () => {
-        // setLoading(true);
-        return signOut(auth);
-    }
 
-    const user = null;
-    const authInfo = {
-        user,
-        createUser,
-        signIn,
-        logOut
-    };
+  const authInfo = {
+    user,
+    createUser,
+    signIn,
+    signInWithGoogle,
+    signInWithGithub,
+    logOut,
+  };
 
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
