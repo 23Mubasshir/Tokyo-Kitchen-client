@@ -16,6 +16,7 @@ const Header = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
+  console.log(user);
 
   return (
     <div>
@@ -26,34 +27,59 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
-              <NavLink className="text-decoration-none px-3 mt-2 " to="/">
+              <NavLink className="text-decoration-none px-3 py-1 my-2 rounded-3" to="/">
                 Home
               </NavLink>
 
-              <NavLink className="text-decoration-none px-3 mt-2 " to="/Blog">
+              <NavLink className="text-decoration-none px-3 py-1 my-2 rounded-3 " to="/Blog">
                 Blog
               </NavLink>
               <NavLink
-                className="text-decoration-none px-3 mt-2 "
+                className="text-decoration-none px-3 py-1 my-2 rounded-3 "
                 to="/About-us"
               >
                 About us
               </NavLink>
+              <NavLink
+                className="text-decoration-none mx-md-2 mt-2 "
+                to="/Profile"
+              >
+                {user?.displayName ? (
+                  <p className="mx-3">{user.displayName}</p>
+                ) : (
+                  <p className="p-0 m-0"></p>
+                )}
+              </NavLink>
+
+              {user?.photoURL ? (
+                <NavLink 
+                className="text-decoration-none
+                "
+                to="/Profile-img">
+                  {user.photoURL ? (
+                    <img
+                      style={{ height: "40px" }}
+                      className="rounded-circle"
+                      src={user.photoURL}
+                      alt=""
+                    />
+                  ) : (
+                    <FaRegUserCircle style={{ fontSize: "2.5rem" }} />
+                  )}
+                </NavLink>
+              ) : (
+                <div></div>
+              )}
             </Nav>
+
             <Nav>
               {user ? (
-                <Link
-                  className="text-decoration-none px-3 mt-3 text-light"
-                  to="#Profile"
-                >
-                  <FaRegUserCircle style={{ fontSize: "2.5rem" }} />
-                </Link>
+                <div></div>
               ) : (
-                <NavLink className="m-lg-3" eventkey={2} to="/sign-up">
+                <NavLink className="m-lg-3" to="/sign-up">
                   <Button variant="outline-light rounded-0">Sign Up</Button>
                 </NavLink>
               )}
-
               {user ? (
                 <Link className="my-3 me-3">
                   <Button

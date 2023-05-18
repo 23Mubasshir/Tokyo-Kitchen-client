@@ -8,9 +8,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
-import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
@@ -19,13 +19,14 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
-  // <-----Regular Sign Un----->
+  // <-----Regular Sign Up----->
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
   // <-----Regular SignIn----->
   const signIn = (email, password) => {
     setLoading(true);
@@ -47,17 +48,27 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
   // <-----Observe auth state change----->
-  useEffect( ()=>{
-    const unsubscribe = onAuthStateChanged(auth, currentUser =>{
-        setUser(currentUser);
-        setLoading(false);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
     });
     // stop observing while unmounting
     return () => {
-        unsubscribe();
-    }
-  })
-
+      unsubscribe();
+    };
+  }, []);
+  // <-----Add photo and name----->
+  const userProfileUpdating = (name, photo) => {
+    return updateProfile(auth.user, {
+      displayName: name,
+      photoURL: photo,
+    }).then((result) => {
+      setUser(result.user);
+    }).catch((error) => {
+      console.log("yo");
+    });
+  };
 
   const authInfo = {
     user,
@@ -67,6 +78,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     signInWithGithub,
     logOut,
+    userProfileUpdating,
   };
 
   return (

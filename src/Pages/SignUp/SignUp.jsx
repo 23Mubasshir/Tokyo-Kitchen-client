@@ -7,8 +7,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../components/Providers/AuthProvider";
 
 const SignUp = () => {
-  const { createUser, signInWithGoogle, signInWithGithub } =
-    useContext(AuthContext);
+  const {
+    createUser,
+    signInWithGoogle,
+    signInWithGithub,
+    User,
+    userProfileUpdating,
+  } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -50,7 +55,7 @@ const SignUp = () => {
     setSuccess("");
     setError("");
     const form = event.target;
-    const name = form.name.value;
+    const name = form.name1.value;
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
@@ -58,10 +63,10 @@ const SignUp = () => {
       setError("Password has to be least 6 characters");
       return;
     }
-
+  //  < ----- Create User ----->
     createUser(email, password)
       .then((result) => {
-        const createdUser = result.user;
+        // const createdUser = result.user;
         // console.log(createdUser);
         setError("");
         setSuccess("User has been Created Successfully");
@@ -71,6 +76,9 @@ const SignUp = () => {
         console.log(error.message);
         setError(error.message);
       });
+
+    //  < ----- Update User profile----->
+    userProfileUpdating(name, photo)
   };
 
   const handleAccepted = (event) => {
@@ -93,7 +101,7 @@ const SignUp = () => {
               type="text"
               placeholder="Your Name"
               required
-              name="name"
+              name="name1"
             />
             <Form.Label>Your Photo</Form.Label>
             <Form.Control
