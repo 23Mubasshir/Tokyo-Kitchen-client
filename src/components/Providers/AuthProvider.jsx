@@ -61,12 +61,12 @@ const AuthProvider = ({ children }) => {
   // <-----Add photo and name----->
   const userProfileUpdating = (name, photo) => {
     return updateProfile(auth.user, {
-      displayName: name,
-      photoURL: photo,
+      displayName: {name},
+      photoURL: {photo},
     }).then((result) => {
       setUser(result.user);
     }).catch((error) => {
-      console.log("yo");
+      console.log("Error while updating");
     });
   };
 
